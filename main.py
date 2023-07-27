@@ -119,8 +119,8 @@ if __name__ == '__main__':
     import model_resnet
     test_model = model_resnet.resnet18(num_classes=10, penultimate_2d=True)
     ref_model = model_resnet.resnet18(num_classes=10, penultimate_2d=True)
-    test_path = './ref_models/MNIST_ResNet18_ref_Epoch_14_test_acc_99.46%_trigger_acc_10%_ref.pt'
-    ref_path = './ref_models/MNIST_ResNet18_ref_Epoch_14_test_acc_99.46%_trigger_acc_10%_ref.pt'
+    test_path = './ref_models/MNIST_ResNet18_ref_Epoch_14_test_acc_99.46%_trigger_acc_10%_ref.pt' # replace it by the path of your watermarked model
+    ref_path = './ref_models/MNIST_ResNet18_ref_Epoch_14_test_acc_99.46%_trigger_acc_10%_ref.pt' 
     
     test_model.load_state_dict(torch.load(test_path), strict=True)
     ref_model.load_state_dict(torch.load(ref_path), strict=True)
