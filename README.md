@@ -21,6 +21,10 @@ Realizing this concept for deep classification models, it is stated that deep fi
 
 <left><img src="./img/flowchart.png" width="650"></left>
 
+## Visualization
+We provide the visualization module to visualize how deep fidelity is achieved in backdoor watermarking ResNet18 for MNIST classification. The task is easy enough such that the penultimate layer of ResNet18 can be reduced to 2 neurons without performance degradation. Note that the feature and prototype visualization is the exact situation, not approximation.
+
+<left><img src="./img/demo.png" width="800"></left>
 
 ## Citation Information
 > \[1] G. Hua, A. B. J. Teoh, Y. Xiang, and H. Jiang, "Unambiguous and high-fidelity backdoor watermarking for deep neural networks," IEEE Transactions on Neural Networks and Learning Systems, 2023. [link](https://ieeexplore.ieee.org/document/10059007)
