@@ -71,6 +71,11 @@ if __name__ == '__main__':
     7: FixLL+TWL    embed via FixLL plus TWL
     8: FixLL+PFL    embed via FixLL plus the proposed penultimate feature loss (PFL) (achieving deep fidelity)
     9: FixLL+SPL    embed via FixLL plus the proposed softmax probability-distribution loss (SPL) (achieving deep fidelity)
+
+    [1] G. Hua, A. B. J. Teoh, Y. Xiang, and H. Jiang, "Unambiguous and high-fidelity backdoor watermarking for deep neural networks," IEEE Transactions on Neural Networks and Learning Systems, 2023.
+    
+    [2] G. Hua and A. B. J. Teoh, "Deep fidelity in DNN watermarking: A study of backdoor watermarking for classification models," Pattern Recognition, 2023.
+
     """
 
     parser = argparse.ArgumentParser(description='DNN Backdoor Watermarking Parameters')

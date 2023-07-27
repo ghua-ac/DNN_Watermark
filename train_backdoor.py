@@ -355,6 +355,7 @@ def train(trainloader, testloader, trigger_sample, trigger_label, trained_path, 
         scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[int(num_epochs / 2)], gamma=0.1)
 
         ## ref models used in [2] (for reference). Can simply use the ref models in Lines 15-31
+        
         # if dataset == 'MNIST':
         #     ref_path = 'ref_models/deep_fidelity/MNIST_ResNet18_Host_Model_Epoch_12_test_acc_99.32%_trigger_acc_10.00%.pt'
         # elif dataset == 'CIFAR10':

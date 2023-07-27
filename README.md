@@ -23,9 +23,9 @@ Realizing this concept for deep classification models, it is stated that deep fi
 
 
 ## Citation Information
- > \[1] G. Hua, A. B. J. Teoh, Y. Xiang, and H. Jiang, "Unambiguous and high-fidelity backdoor watermarking for deep neural networks," IEEE Transactions on Neural Networks and Learning Systems, 2023. [link](https://ieeexplore.ieee.org/document/10059007)
+> \[1] G. Hua, A. B. J. Teoh, Y. Xiang, and H. Jiang, "Unambiguous and high-fidelity backdoor watermarking for deep neural networks," IEEE Transactions on Neural Networks and Learning Systems, 2023. [link](https://ieeexplore.ieee.org/document/10059007)
 
-> \[2] G. Hua and A. B. J. Teoh, "Deep Fidelity in DNN Watermarking: A Study of Backdoor Watermarking for Classification Models," Pattern Recognition, 2023. [link](https://ieeexplore.ieee.org/document/10059007)
+> \[2] G. Hua and A. B. J. Teoh, "Deep fidelity in DNN watermarking: A study of backdoor watermarking for classification models," Pattern Recognition, 2023. [link](https://arxiv.org/pdf/2208.00563.pdf)
 
 
 
