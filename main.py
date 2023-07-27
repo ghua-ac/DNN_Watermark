@@ -1,6 +1,7 @@
 import torch
 import os
-from utilities import train_test_loader, gen_key_chain
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+from utilities import train_test_loader, gen_key_chain, visualize
 import argparse
 
 KEY_DIM = (28, 32, 32, 224)  # equal to image dimension: MNIST 28， CIFAR10 32， CIFAR100 32， FOOD101 224
@@ -109,22 +110,23 @@ if __name__ == '__main__':
     trigger_sample, trigger_label = trigger_set['data'], trigger_set['target']
 
     # TODO: Train and embed
-    import train_backdoor
-    train_backdoor.train(trainloader, testloader, trigger_sample, trigger_label, args.trained_path,
-                         dataset=dataset_name[args.dataset_index], mode=mode[args.embed_mode], n=args.n, m=args.m, mix=args.mix)
+    # import train_backdoor
+    # train_backdoor.train(trainloader, testloader, trigger_sample, trigger_label, args.trained_path,
+    #                      dataset=dataset_name[args.dataset_index], mode=mode[args.embed_mode], n=args.n, m=args.m, mix=args.mix)
 
 
-    # # TODO: Compare model and visualization
-    # import model_resnet
-    # test_model = model_resnet.resnet18(num_classes=10, penultimate_2d=True)
-    # ref_model = model_resnet.resnet18(num_classes=10, penultimate_2d=True)
-    # test_path = '/home/ghua/Desktop/dnn_watermark/trained/INSTANCE/CIFAR10/FTAL/CIFAR10_ResNet18_FTAL_Epoch_40_test_acc_85.99%_trigger_acc_100.00%_n_10_m_10_mix_(32)4_LP_0.7091.pt'
-    # ref_path = './ref_models/deep_fidelity/CIFAR10_ResNet18_Host_Model_Epoch_37_test_acc_86.44%_trigger_acc_11.00%.pt'
+    # TODO: Compare model and visualization
+    import model_resnet
+    test_model = model_resnet.resnet18(num_classes=10, penultimate_2d=True)
+    ref_model = model_resnet.resnet18(num_classes=10, penultimate_2d=True)
+    test_path = './ref_models/MNIST_ResNet18_ref_Epoch_14_test_acc_99.46%_trigger_acc_10%_ref.pt'
+    ref_path = './ref_models/MNIST_ResNet18_ref_Epoch_14_test_acc_99.46%_trigger_acc_10%_ref.pt'
     
-    # test_model.load_state_dict(torch.load(test_path), strict=True)
-    # ref_model.load_state_dict(torch.load(ref_path), strict=True)
+    test_model.load_state_dict(torch.load(test_path), strict=True)
+    ref_model.load_state_dict(torch.load(ref_path), strict=True)
     
-    # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    # compare_model(test_model, ref_model, trainloader, device)
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # weight_loss, feature_loss, kld_loss, prototype_loss = compare_model(test_model, ref_model, trainloader, device)
+    visualize(test_model, ref_model, trainloader, device)
 
     print('End of Program')

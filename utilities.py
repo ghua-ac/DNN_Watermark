@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import copy
 from tqdm import tqdm
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 
 def train_test_loader(dataset, path, batch_size=64):
@@ -166,8 +167,8 @@ def visualize(model, ref_model, dataloader, device):
     features = torch.empty(0, 3).to(device)
     features_ref = torch.empty(0, 3).to(device)
 
-    prototype_ref = copy.copy(ref_model.out.weight.detach())
-    prototype_v = copy.copy(model.out.weight.detach())
+    prototype_ref = copy.copy(ref_model.out.weight.detach().to('cpu'))
+    prototype_v = copy.copy(model.out.weight.detach().to('cpu'))
 
     correct = 0
     correct_ref = 0
@@ -175,6 +176,8 @@ def visualize(model, ref_model, dataloader, device):
     with torch.no_grad():
         for data, target in dataloader:
             data, target = data.to(device), target.to(device)
+            if data.shape[1] == 1:
+                data = data.repeat(1, 3, 1, 1)
             feature, pred = model(data)
             feature_ref, pred_ref = ref_model(data)
 
@@ -204,10 +207,12 @@ def visualize(model, ref_model, dataloader, device):
     plt.xlabel('$z(0)$', fontsize=14)
     plt.ylabel('$z(1)$', fontsize=14)
     plt.axis('square')
-    plt.xlim([-150, 150])
-    plt.ylim([-150, 150])
+    plt.xlim([-140, 140])
+    plt.ylim([-160, 160])
+    plt.xticks([])
+    plt.yticks([])
     plt.tight_layout()
-    plt.grid()
+    plt.grid(False)
 
     plt.figure(2, figsize=(6, 6))
     for i in range(10):
@@ -217,10 +222,12 @@ def visualize(model, ref_model, dataloader, device):
     plt.xlabel('$z(0)$', fontsize=14)
     plt.ylabel('$z(1)$', fontsize=14)
     plt.axis('square')
-    plt.xlim([-150, 150])
-    plt.ylim([-150, 150])
+    plt.xlim([-140, 140])
+    plt.ylim([-160, 160])
+    plt.xticks([])
+    plt.yticks([])
     plt.tight_layout()
-    plt.grid()
+    plt.grid(False)
 
     plt.figure(3, figsize=(6, 6))
     for i in range(10):
