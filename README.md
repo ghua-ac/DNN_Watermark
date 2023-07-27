@@ -22,7 +22,8 @@ Realizing this concept for deep classification models, it is stated that deep fi
 <left><img src="./img/flowchart.png" width="650"></left>
 
 ## Visualization
-We provide the visualization module to visualize how deep fidelity is achieved in backdoor watermarking ResNet18 for MNIST classification. The task is easy enough such that the penultimate layer of ResNet18 can be reduced to 2 neurons without performance degradation. Note that the feature and prototype visualization is the exact situation, not approximation.
+We provide the visualization module to visualize how deep fidelity is achieved in backdoor watermarking ResNet18 for MNIST classification. The task is easy enough such that the penultimate layer of ResNet18 can be reduced to 2 neurons without performance degradation (see figure below). Note that the feature and prototype visualization is the exact situation, not approximation. This visualization idea is inspired by 
+[Wen *et al.*, ECCV 2016](https://link.springer.com/chapter/10.1007/978-3-319-46478-7_31#citeas).
 
 <left><img src="./img/demo.png" width="800"></left>
 
